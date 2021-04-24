@@ -41,10 +41,14 @@ class MyToDoApp extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  Text(
-                    "${TodoBloc.instance.numOfTasks()} Tasks",
-                    style: TextStyle(fontSize: 25.0, color: Colors.white),
-                  ),
+                  StreamBuilder(
+                      stream: TodoBloc.instance.listTaskStream,
+                      builder: (context, asyncData) {
+                        return Text(
+                          "${asyncData.data != null ? asyncData.data.length : 0} Tasks",
+                          style: TextStyle(fontSize: 25.0, color: Colors.white),
+                        );
+                      }),
                 ],
               ),
             ),

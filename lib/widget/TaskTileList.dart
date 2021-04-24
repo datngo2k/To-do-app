@@ -26,7 +26,7 @@ class TaskTileList extends StatelessWidget {
             },
           );
         },
-        itemCount: TodoBloc.instance.numOfTasks(),
+        itemCount: asyncData.data != null ? asyncData.data.length : 0,
       ),
     );
   }
